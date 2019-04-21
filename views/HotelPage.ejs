@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/hotel.css">
+    <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <!-- <script src="/js/analyzeHotel.js"></script> -->
+
+    <title>Opinion Mining : <%=hotelName%></title>
+</head>
+
+<body>
+    <div class="jumbotron" id="mainDiv">
+        <div class="container">
+            <h1 class="display-4"><%=hotelName%></h1>
+            <br><br>
+            <div class="table-responsive">
+                <table id="hotelTable" class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th style="width: 40%;">Review/Comment</th>
+                            <th style="width: 10%;">Score</th>
+                            <th style="width: 10%;">Comparative Score</th>
+                            <th style="width: 18%;">Words Matched</th>
+                            <th style="width: 12%;">Positive Words</th>
+                            <th style="width: 10%;">Negative Words</th>
+                        </tr>
+                    </thead>
+                    <%reviewObjects.forEach(review=>{ %>
+                    <tr>
+                        <td><%=review.reviewText%></td>
+                        <td><%=review.reviewAnalysis.score%></td>
+                        <td><%=review.reviewAnalysis.myComp.toFixed(3)%></td>
+                        <td><%=review.reviewAnalysis.words%></td>
+                        <td><%=review.reviewAnalysis.positive%></td>
+                        <td><%=review.reviewAnalysis.negative%></td>
+                    </tr><%
+                            })%>
+                </table>
+            </div>
+        </div>
+</body>
+
+</html>
